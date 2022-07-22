@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from rest_framework import viewsets
+from .models import Price
+from .serializers import PriceSerializer
 
-def index(request):
-    return HttpResponse("Hey Yoo")
+
+class Priceview(viewsets.ModelViewSet):
+
+    queryset = Price.objects.all()
+    serializer_class = PriceSerializer
 
